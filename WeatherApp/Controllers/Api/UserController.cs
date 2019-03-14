@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,10 +25,18 @@ namespace WeatherApp.Controllers.Api
 
 
         [HttpPost("login")]
-        public async Task<string> Post([FromBody]Login command)
+        public async Task<IActionResult> Post([FromBody]Login command)
         {
-            var x = await _userService.LoginAsync(command.login, command.password);
-            return x;
+            try
+            {
+                var x = await _userService.LoginAsync(command.login, command.password);
+                return Content(x);
+            }
+            catch(Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content(ex.Message);
+            }
         }
     }
 }

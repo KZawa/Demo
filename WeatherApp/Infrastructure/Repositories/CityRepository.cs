@@ -51,12 +51,18 @@ namespace WeatherApp.Infrastructure.Repositories
         {
             Cities city = await _dbContext.Cities.FirstOrDefaultAsync(i => i.CityName == name);
 
-            _dbContext.Entry(city)
-                      .Collection(i => i.WeatherMeasures)
-                      .Query()
-                      .Where(i => i.MeasureDate >= DateTime.UtcNow.AddDays(-1) && i.MeasureDate < DateTime.UtcNow.AddDays(dayCount - 1))
-                      .Load();
-
+            if (city != null)
+            {
+                _dbContext.Entry(city)
+                          .Collection(i => i.WeatherMeasures)
+                          .Query()
+                          .Where(i => i.MeasureDate >= DateTime.UtcNow.AddDays(-1) && i.MeasureDate < DateTime.UtcNow.AddDays(dayCount - 1))
+                          .Load();
+            }
+            else
+            {
+                return null;
+            }
             return city;
         }
     }

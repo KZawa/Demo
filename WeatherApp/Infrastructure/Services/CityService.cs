@@ -31,13 +31,13 @@ namespace WeatherApp.Infrastructure.Services
             await _cityRepository.DeleteAsync(id);
         }
 
-        public async Task<CityDTO> GetAsync(int id, int dayCount)
+        public async Task<CityDTO> GetAsync(int id, int dayCount = 5)
         {
             Cities city = await _cityRepository.GetAsync(id, dayCount);
             return _mapper.Map<CityDTO>(city);
         }
 
-        public async Task<CityDTO> GetAsync(string name, int dayCount)
+        public async Task<CityDTO> GetAsync(string name, int dayCount = 5)
         {
             Cities city = await _cityRepository.GetAsync(name, dayCount);
             return _mapper.Map<CityDTO>(city);

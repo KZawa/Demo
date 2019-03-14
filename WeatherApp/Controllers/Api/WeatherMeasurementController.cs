@@ -60,7 +60,20 @@ namespace WeatherApp.Controllers.Api
                 await _weatherMeasureService.UpdateAsync(command);
                 return NoContent();
             }
-            catch(Exception)
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpPut("cityName/{cityName}")]
+        public async Task<IActionResult> Put (string cityName)
+        {
+            try
+            {
+                await _weatherMeasureService.UpdateAsync(cityName);
+                return Ok();
+            }
+            catch (Exception)
             {
                 return BadRequest();
             }

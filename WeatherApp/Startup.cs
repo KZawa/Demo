@@ -14,6 +14,7 @@ using System.Text;
 using WeatherApp.Core.Domain;
 using WeatherApp.Core.Repositories;
 using WeatherApp.Infrastructure.AutoMapper;
+using WeatherApp.Infrastructure.ExternalApiWeatherHandler;
 using WeatherApp.Infrastructure.Repositories;
 using WeatherApp.Infrastructure.Services;
 using WeatherApp.Infrastructure.Settings;
@@ -40,6 +41,7 @@ namespace WeatherApp
                 });
 
             services.Configure<JwtSettings>(Configuration.GetSection("Jwt"));
+            services.Configure<ExternalApiSettings>(Configuration.GetSection("ExternalApi"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -48,6 +50,7 @@ namespace WeatherApp
                 c.SwaggerDoc("v1", new Info { Title = "Weather App API", Version = "v1" });
             });
 
+            services.AddScoped<IExternalApiWeatherHandler, ExternalApiWeatherHandler>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITokenService, TokenService>();

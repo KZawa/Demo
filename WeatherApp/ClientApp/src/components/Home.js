@@ -10,6 +10,7 @@ export class Home extends Component {
         <ul>
           <li>Na tej stronie jest przedstawiona instrukcja obslugi. </li>
           <li>Aby zobaczyc dokumentacje Api trzeba dokleic do adresu tej strony:<strong> /swagger/index.html</strong>.</li>
+          <li>Preferowana przegladarka do ogladania dokumentacji Api to Internet Explorer</li>
           <li>W bazie danyh znajduja sie 3 encje: WeatherMeasure, City, User. Encja WeatherMeasure jest w relacji N:1 z encja City. </li>
           <li>Na stronie znajduja sie 2 zakladki: 'Home' i 'Weather Forecast'</li>
           <li>Jak sie wejdzie w zakladke 'Weather Forecast' to zostanie wyswietlona niepelna prognoza pogody</li>
@@ -26,6 +27,7 @@ export class Home extends Component {
           <li>W bazie danych w tabeli Cities nazwy miast musza byc unikalne</li>
           <li>Date powinno podawac sie w formacie "dd-MM-yyyy"</li>
           <li>Dla komunikatu get dla kontrolera City jest pobierane miasto oraz rekordy typu WeatherMeasure, ktorych daty pomiarowe znajduja sie od daty dzisiejszej az do daty okrslonej za pomoca parametru 'dayCount', </li>
+
 
         </ul>
       </div>

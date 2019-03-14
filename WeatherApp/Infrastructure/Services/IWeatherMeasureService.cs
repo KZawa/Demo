@@ -12,7 +12,8 @@ namespace WeatherApp.Infrastructure.Services
         Task<WeatherMeasureDTO> GetAsync(int city_id, DateTime measurementDate);
         Task CreateAsync(WeatherMeasureDTO weatherMeasureDTO);
         Task UpdateAsync(WeatherMeasureDTO weatherMeasureDTO);
-        Task <IEnumerable<WeatherMeasureDTO>> BrowseAsync(int city_id, DateTime maximumDate);
+        Task UpdateAsync(string cityName);
+        Task<IEnumerable<WeatherMeasureDTO>> BrowseAsync(int city_id, DateTime maximumDate);
         Task DeleteAsync(int id);
     }
 }

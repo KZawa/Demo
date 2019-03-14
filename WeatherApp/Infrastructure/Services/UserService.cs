@@ -26,7 +26,7 @@ namespace WeatherApp.Infrastructure.Services
             string saltedPassword = password.GetHashString();
             var user = await _userRepository.GetAsync(login);
 
-            if (user.Password != saltedPassword)
+            if (user == null || user.Password != saltedPassword)
             {
                 throw new Exception("Invalid credentials.");
             }

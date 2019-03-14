@@ -25,8 +25,10 @@ namespace WeatherApp.Infrastructure.Repositories
             if (city == null)
                 throw new Exception("City doesn't exist.");
 
-            city.WeatherMeasures.Add(weatherMeasure);
+            //  _dbContext.Attach(weatherMeasure);
+            //   city.WeatherMeasures.Add(weatherMeasure);
 
+            await _dbContext.WeatherMeasures.AddAsync(weatherMeasure);
             await _dbContext.SaveChangesAsync();
         }
 
@@ -48,7 +50,7 @@ namespace WeatherApp.Infrastructure.Repositories
 
         public async Task UpdateAsync(WeatherMeasures weatherMeasure)
         {
-            WeatherMeasures weatheremeasureRecord = await GetAsync(weatherMeasure.Id);
+            WeatherMeasures weatheremeasureRecord = await GetAsync(weatherMeasure.CityId, weatherMeasure.MeasureDate);
             weatheremeasureRecord.CopyValues(weatherMeasure);
             await _dbContext.SaveChangesAsync();
         }

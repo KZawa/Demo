@@ -10,6 +10,11 @@ namespace WeatherApp.Core.Domain
             WeatherMeasures = new HashSet<WeatherMeasures>();
         }
 
+        public Cities(string cityName)
+        {
+            CityName = cityName;
+        }
+
         public int CityId { get; set; }
         public string CityName { get; set; }
 

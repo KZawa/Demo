@@ -23,8 +23,8 @@ namespace WeatherApp.Core.Domain
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-  //              optionsBuilder.UseSqlServer("Data Source=(localdb)\\TestDB;Initial Catalog=WeatherDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                //              optionsBuilder.UseSqlServer("Data Source=(localdb)\\TestDB;Initial Catalog=WeatherDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
@@ -83,7 +83,7 @@ namespace WeatherApp.Core.Domain
 
                 entity.Property(e => e.MeasureDate)
                     .HasColumnName("measure_date")
-                    .HasColumnType("date");
+                    .HasColumnType("smalldatetime");
 
                 entity.Property(e => e.Rain)
                     .HasColumnName("rain")
